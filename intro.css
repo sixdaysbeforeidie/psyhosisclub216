@@ -12,16 +12,6 @@ html, body {
     font-family: 'Cormorant Garamond', serif;
 }
 
-/* ── ЭФФЕКТ СОЛНЦЕЗАЩИТНЫХ ОЧКОВ ── */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: rgba(20, 24, 28, 0.2);
-    pointer-events: none;
-    z-index: 700;
-}
-
 /* ── ENTER SCREEN ── */
 #enterScreen {
     position: fixed;
