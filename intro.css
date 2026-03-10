@@ -12,6 +12,16 @@ html, body {
     font-family: 'Cormorant Garamond', serif;
 }
 
+/* ── ЭФФЕКТ СОЛНЦЕЗАЩИТНЫХ ОЧКОВ ── */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 24, 28, 0.5);
+    pointer-events: none;
+    z-index: 700;
+}
+
 /* ── ENTER SCREEN ── */
 #enterScreen {
     position: fixed;
@@ -59,7 +69,7 @@ html, body {
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url('trymaybe.webp');
+    background-image: url('introbg.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
