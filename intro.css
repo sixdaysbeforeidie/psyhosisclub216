@@ -69,7 +69,7 @@ body::after {
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url('try\ maybe.webp');
+    background-image: url('trymaybe.webp');
     background-size: cover;
     background-position: center;
     opacity: 0;
