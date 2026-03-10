@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>soangry — PSYHOSISCLUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Artist.css">
+</head>
+<body>
+
+<audio id="bgMusic" src="back2.mp3" loop></audio>
+
+<header>
+    <div class="logo" onclick="goTo('main.html')">PSYHOSISCLUB</div>
+    <nav>
+        <a href="artist.html">ARTISTS</a>
+        <a href="#">RELEASES</a>
+        <a href="archive.html">ARCHIVE</a>
+    </nav>
+    <div class="header-right">
+        <a href="Contact.html">CONTACT</a>
+    </div>
+</header>
+
+<div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+</div>
+<div class="mobile-nav" id="mobileNav">
+    <a href="Artist.html" onclick="toggleMenu()">ARTISTS</a>
+    <a href="#" onclick="toggleMenu()">RELEASES</a>
+    <a href="archive.html" onclick="toggleMenu()">ARCHIVE</a>
+    <a href="Contact.html" onclick="toggleMenu()">CONTACT</a>
+</div>
+
+<main class="artist-single">
+
+    <div class="avatar">
+        <img src="soangry.jpg" alt="soangry" onerror="this.parentElement.classList.add('no-photo')">
+        <div class="placeholder">S</div>
+    </div>
+
+    <h1>soangry</h1>
+    <p class="label-tag">PSYHOSISCLUB</p>
+    <div class="divider"></div>
+
+    <p class="bio">bio coming soon</p>
+
+    <div class="socials">
+        <a class="social-btn" href="https://open.spotify.com/artist/5AwTE83ig48t60E14wj9lt?si=u2J3DU0nTDWuv-a-vcvmEg" target="_blank">Spotify</a>
+        <a class="social-btn" href="https://on.soundcloud.com/W0H3yfq7bmEdzT61aF" target="_blank">SoundCloud</a>
+        <a class="social-btn" href="https://instagram.com/ssoangry" target="_blank">Instagram</a>
+        <a class="social-btn" href="https://t.me/ssoangry" target="_blank">Telegram</a>
+    </div>
+
+    <div class="release-section">
+        <p class="release-label">Latest Release</p>
+        <iframe class="spotify-embed"
+            src="https://open.spotify.com/track/5SedYLqvvKD2PJFT9UsUg9?si=44288e3332c741d5"
+            width="100%" height="352" frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <a class="back-btn" onclick="goTo('Artist.html')">← back to artists</a>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

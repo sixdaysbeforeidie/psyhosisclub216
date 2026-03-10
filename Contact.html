@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CONTACT — PSYHOSISCLUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Contact.css">
+</head>
+<body>
+
+<audio id="bgMusic" src="back2.mp3" loop></audio>
+    
+<header>
+    <div class="logo" onclick="goTo('main.html')">PSYHOSISCLUB</div>
+    <nav>
+        <a href="Artist.html">ARTISTS</a>
+        <a href="#">RELEASES</a>
+        <a href="archive.html">ARCHIVE</a>
+    </nav>
+    <div class="header-right">
+        <a href="Contact.html">CONTACT</a>
+    </div>
+</header>
+
+<div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+</div>
+<div class="mobile-nav" id="mobileNav">
+    <a href="Artist.html" onclick="toggleMenu()">ARTISTS</a>
+    <a href="#" onclick="toggleMenu()">RELEASES</a>
+    <a href="archive.html" onclick="toggleMenu()">ARCHIVE</a>
+    <a href="Contact.html" onclick="toggleMenu()">CONTACT</a>
+</div>
+
+<main class="contact-page">
+
+    <p class="page-label">CONTACT</p>
+    <h1 class="contact-title">GET IN TOUCH</h1>
+    <div class="divider"></div>
+
+    <div class="contact-list">
+
+        <div class="contact-row">
+            <div class="contact-left">
+                <p class="contact-name">be.luv</p>
+                <p class="contact-role">Artist</p>
+            </div>
+            <a href="mailto:beluv@psyhosisclub.com" class="contact-email">почта этого</a>
+        </div>
+
+        <div class="contact-row">
+            <div class="contact-left">
+                <p class="contact-name">soangry</p>
+                <p class="contact-role">Artist</p>
+            </div>
+            <a href="mailto:soangry@psyhosisclub.com" class="contact-email">почта этой</a>
+        </div>
+
+        <div class="contact-row">
+            <div class="contact-left">
+                <p class="contact-name">taiski.des</p>
+                <p class="contact-role">Art & Design</p>
+            </div>
+            <a href="mailto:taiski@psyhosisclub.com" class="contact-email">почта вот того</a>
+        </div>
+
+        <div class="contact-row">
+            <div class="contact-left">
+                <p class="contact-name">six days before i die</p>
+                <p class="contact-role">Web & Founder</p>
+            </div>
+            <a href="mailto:sixdays@psyhosisclub.com" class="contact-email">sixdaysbeforeidie@gmail.com</a>
+        </div>
+
+    </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

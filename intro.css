@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #080808;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* ── ЭФФЕКТ СОЛНЦЕЗАЩИТНЫХ ОЧКОВ ── */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 24, 28, 0.5);
+    pointer-events: none;
+    z-index: 700;
+}
+
+/* ── ENTER SCREEN ── */
+#enterScreen {
+    position: fixed;
+    inset: 0;
+    background: #060606;
+    z-index: 8000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#enterText {
+    font-size: 13px;
+    letter-spacing: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.25; }
+    50%       { opacity: 0.7; }
+}
+
+/* ── FLASH ── */
+#flash {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ── SCENE ── */
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ── BACKGROUND ── */
+.bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('try\ maybe.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    z-index: 0;
+}
+
+/* ── TITLE ── */
+.intro-title {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    letter-spacing: 10px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    opacity: 0;
+    white-space: nowrap;
+    z-index: 800;
+}
+
+/* ── CHARACTER ── */
+#char {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100vh;
+    opacity: 0;
+    z-index: 5;
+}
+
+#char img {
+    height: 100vh;
+    width: auto;
+    display: block;
+}
+
+/* ── STARS ── */
+.star {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 800;
+}
+
+.star img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: filter 0.25s, transform 0.25s;
+}
+
+.star:hover img {
+    filter: brightness(1.4);
+    transform: scale(1.06);
+}
+
+/* ── HINT ── */
+.hint {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 800;
+}
+
+/* ══════════════════
+   МОБИЛЬНЫЙ АДАПТИВ
+══════════════════ */
+@media (max-width: 768px) {
+    .intro-title { font-size: 9px; letter-spacing: 6px; top: 20px; }
+    #char { height: 88vh; }
+    #char img { height: 88vh; }
+    .star { width: 110px; height: 110px; }
+    #enterText { font-size: 11px; letter-spacing: 8px; }
+    .hint { font-size: 9px; letter-spacing: 3px; }
+}
+
+@media (max-width: 400px) {
+    .star { width: 85px; height: 85px; }
+    #char { height: 82vh; }
+    #char img { height: 82vh; }
+}

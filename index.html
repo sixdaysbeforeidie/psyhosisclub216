@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PSYHOSISCLUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+
+<div id="enterScreen">
+    <p id="enterText">CLICK TO ENTER</p>
+</div>
+
+<div id="flash"></div>
+
+<div class="scene" id="scene" style="display:none;">
+    <div class="bg" id="bg"></div>
+    <p class="intro-title">PSYHOSISCLUB</p>
+
+    <div id="char">
+        <img src="main char1.png" alt="character">
+    </div>
+
+    <div class="star" id="s1"><img src="stars.png" alt="star"></div>
+    <div class="star" id="s2"><img src="stars.png" alt="star"></div>
+    <div class="star" id="s3"><img src="stars.png" alt="star"></div>
+
+    <p class="hint" id="hint">find the right star</p>
+</div>
+
+<audio id="bgMusic" src="back2.mp3" loop></audio>
+<audio id="laughSound" src="New_Project.mp3"></audio>
+
+<script src="intro.js"></script>
+</body>
+</html>

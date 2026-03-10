@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PSYHOSISCLUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bgMusic" src="back2.mp3" loop></audio>
+
+<header>
+    <div class="logo" onclick="goTo('index.html')">PSYHOSISCLUB</div>
+    <nav>
+        <a href="Artist.html">ARTISTS</a>
+        <a href="releases.html">RELEASES</a>
+        <a href="archive.html">ARCHIVE</a>
+    </nav>
+    <div class="header-right">
+        <a href="Contact.html">CONTACT</a>
+    </div>
+</header>
+
+<div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+</div>
+<div class="mobile-nav" id="mobileNav">
+    <a href="Artist.html" onclick="toggleMenu()">ARTISTS</a>
+    <a href="releases.html" onclick="toggleMenu()">RELEASES</a>
+    <a href="archive.html" onclick="toggleMenu()">ARCHIVE</a>
+    <a href="Contact.html" onclick="toggleMenu()">CONTACT</a>
+</div>
+
+<section class="hero">
+    <div class="split left" onclick="goTo('Artist.html')">
+        <img src="fugu.png" alt="Artists">
+        <div class="overlay"><span>ARTISTS</span></div>
+    </div>
+    <div class="split right" onclick="goTo('archive.html')">
+        <img src="скуча. чб.png" alt="Archive">
+        <div class="overlay"><span>ART</span></div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

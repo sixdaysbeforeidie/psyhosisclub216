@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    background: #0a0a0a;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 2px;
+    transition: opacity 0.3s;
+}
+
+a:hover { opacity: 0.5; }
+
+/* ── HEADER ── */
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 40px;
+    background: #0a0a0a;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 36px;
+}
+
+.header-right { display: flex; gap: 20px; }
+
+/* ── BURGER ── */
+.burger {
+    display: none;
+    position: fixed;
+    top: 18px; right: 20px;
+    z-index: 200;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.burger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: white;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #080808;
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.mobile-nav.open { display: flex; opacity: 1; }
+.mobile-nav a { font-size: 22px; letter-spacing: 6px; }
+
+/* ── ОБЩИЕ ── */
+.page-label {
+    font-size: 10px;
+    letter-spacing: 10px;
+    color: rgba(255,255,255,0.18);
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+.divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 40px;
+}
+
+.social-btn {
+    padding: 9px 22px;
+    border: 1px solid rgba(255,255,255,0.14);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    background: transparent;
+    transition: border-color 0.3s, color 0.3s;
+    display: inline-block;
+}
+
+.social-btn:hover {
+    border-color: rgba(255,255,255,0.4);
+    color: white;
+    opacity: 1;
+}
+
+/* ════════════════════════
+   СПИСОК АРТИСТОВ
+════════════════════════ */
+.artists-page {
+    min-height: 100vh;
+    padding: 130px 40px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.artists-grid {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.artist-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    cursor: pointer;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+    opacity: 0.85;
+}
+
+.artist-photo {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #111;
+}
+
+.artist-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.artist-card:hover .artist-photo img {
+    transform: scale(1.05);
+}
+
+.artist-photo-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 90px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.06);
+    z-index: 0;
+}
+
+.artist-photo.no-photo img { display: none; }
+
+.artist-info { text-align: center; }
+
+.artist-info h2 {
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.artist-sub {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+}
+
+/* ════════════════════════
+   СТРАНИЦА АРТИСТА
+════════════════════════ */
+.artist-single {
+    min-height: 100vh;
+    padding: 130px 40px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.artist-single .avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #111;
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.artist-single .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.artist-single .avatar .placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.08);
+}
+
+.artist-single .avatar.no-photo img { display: none; }
+
+.artist-single h1 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.label-tag {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+}
+
+.bio {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+    max-width: 500px;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.release-section { width: 100%; }
+
+.release-label {
+    font-size: 10px;
+    letter-spacing: 8px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.spotify-embed {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 50px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.22);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.back-btn:hover { color: rgba(255,255,255,0.7); opacity: 1; }
+
+/* ── МОБАЙЛ ── */
+@media (max-width: 900px) {
+    .artist-photo { width: 240px; height: 240px; }
+    .artists-grid { gap: 50px; }
+}
+
+@media (max-width: 768px) {
+    header nav, header .header-right { display: none; }
+    header { padding: 16px 20px; }
+    .logo { font-size: 14px; letter-spacing: 4px; }
+    .burger { display: flex; }
+
+    .artists-page { padding: 100px 20px 60px; }
+    .artists-grid { gap: 40px; flex-direction: column; align-items: center; }
+    .artist-photo { width: 200px; height: 200px; }
+    .artist-info h2 { font-size: 20px; }
+
+    .artist-single { padding: 100px 24px 60px; }
+    .artist-single h1 { font-size: 22px; }
+    .bio { font-size: 15px; }
+}

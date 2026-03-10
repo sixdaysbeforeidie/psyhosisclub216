@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    background: #0a0a0a;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 2px;
+    transition: opacity 0.3s;
+}
+
+a:hover { opacity: 0.5; }
+
+/* ── HEADER ── */
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 40px;
+    background: #0a0a0a;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 36px;
+}
+
+.header-right { display: flex; gap: 20px; }
+
+/* ── BURGER ── */
+.burger {
+    display: none;
+    position: fixed;
+    top: 18px; right: 20px;
+    z-index: 200;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.burger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: white;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #080808;
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.mobile-nav.open { display: flex; opacity: 1; }
+.mobile-nav a { font-size: 22px; letter-spacing: 6px; }
+
+/* ── CONTACT PAGE ── */
+.contact-page {
+    min-height: 100vh;
+    padding: 140px 40px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-label {
+    font-size: 10px;
+    letter-spacing: 10px;
+    color: rgba(255,255,255,0.18);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.contact-title {
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 32px;
+}
+
+.divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 60px;
+}
+
+/* ── CONTACT LIST ── */
+.contact-list {
+    width: 100%;
+    max-width: 740px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: background 0.3s;
+}
+
+.contact-row:first-child {
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-name {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.85);
+    text-transform: lowercase;
+}
+
+.contact-role {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+}
+
+.contact-email {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-email:hover {
+    color: rgba(255,255,255,0.8);
+    opacity: 1;
+}
+
+/* ── МОБАЙЛ ── */
+@media (max-width: 768px) {
+    header nav, header .header-right { display: none; }
+    header { padding: 16px 20px; }
+    .logo { font-size: 14px; letter-spacing: 4px; }
+    .burger { display: flex; }
+
+    .contact-page { padding: 110px 24px 60px; }
+    .contact-title { font-size: 24px; letter-spacing: 6px; }
+
+    .contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 22px 0;
+    }
+
+    .contact-name { font-size: 17px; }
+    .contact-email { font-size: 12px; }
+}
