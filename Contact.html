@@ -14,12 +14,12 @@
 <header>
     <div class="logo" onclick="goTo('main.html')">PSYHOSISCLUB</div>
     <nav>
-        <a href="Artist.html">ARTISTS</a>
-        <a href="#">RELEASES</a>
-        <a href="archive.html">ARCHIVE</a>
+        <a onclick="goTo('artist.html')">ARTISTS</a>
+        <a onclick="goTo('releases.html')">RELEASES</a>
+        <a onclick="goTo('archive.html')">ARCHIVE</a>
     </nav>
     <div class="header-right">
-        <a href="Contact.html">CONTACT</a>
+        <a onclick="goTo('Contact.html')">CONTACT</a>
     </div>
 </header>
 
@@ -27,10 +27,10 @@
     <span></span><span></span><span></span>
 </div>
 <div class="mobile-nav" id="mobileNav">
-    <a href="Artist.html" onclick="toggleMenu()">ARTISTS</a>
-    <a href="#" onclick="toggleMenu()">RELEASES</a>
-    <a href="archive.html" onclick="toggleMenu()">ARCHIVE</a>
-    <a href="Contact.html" onclick="toggleMenu()">CONTACT</a>
+    <a onclick="goTo('artist.html'); toggleMenu()">ARTISTS</a>
+    <a onclick="goTo('releases.html'); toggleMenu()">RELEASES</a>
+    <a onclick="goTo('archive.html'); toggleMenu()">ARCHIVE</a>
+    <a onclick="goTo('Contact.html'); toggleMenu()">CONTACT</a>
 </div>
 
 <main class="contact-page">

@@ -64,7 +64,7 @@ body::after {
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url('try\ maybe.png');
+    background-image: url('introbg.png');
     background-size: cover;
     background-position: center;
     opacity: 0;

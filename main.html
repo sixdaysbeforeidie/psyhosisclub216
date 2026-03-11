@@ -13,14 +13,14 @@
 <audio id="bgMusic" src="back2.mp3" loop></audio>
 
 <header>
-    <div class="logo" onclick="goTo('index.html')">PSYHOSISCLUB</div>
+    <div class="logo" onclick="goTo('main.html')">PSYHOSISCLUB</div>
     <nav>
-        <a href="Artist.html">ARTISTS</a>
-        <a href="releases.html">RELEASES</a>
-        <a href="archive.html">ARCHIVE</a>
+        <a onclick="goTo('artist.html')">ARTISTS</a>
+        <a onclick="goTo('releases.html')">RELEASES</a>
+        <a onclick="goTo('archive.html')">ARCHIVE</a>
     </nav>
     <div class="header-right">
-        <a href="Contact.html">CONTACT</a>
+        <a onclick="goTo('Contact.html')">CONTACT</a>
     </div>
 </header>
 
@@ -28,19 +28,19 @@
     <span></span><span></span><span></span>
 </div>
 <div class="mobile-nav" id="mobileNav">
-    <a href="Artist.html" onclick="toggleMenu()">ARTISTS</a>
-    <a href="releases.html" onclick="toggleMenu()">RELEASES</a>
-    <a href="archive.html" onclick="toggleMenu()">ARCHIVE</a>
-    <a href="Contact.html" onclick="toggleMenu()">CONTACT</a>
+    <a onclick="goTo('artist.html'); toggleMenu()">ARTISTS</a>
+    <a onclick="goTo('releases.html'); toggleMenu()">RELEASES</a>
+    <a onclick="goTo('archive.html'); toggleMenu()">ARCHIVE</a>
+    <a onclick="goTo('Contact.html'); toggleMenu()">CONTACT</a>
 </div>
 
 <section class="hero">
     <div class="split left" onclick="goTo('Artist.html')">
-        <img src="fugu.png" alt="Artists">
+        <img src="fugu 河豚.webp" alt="Artists">
         <div class="overlay"><span>ARTISTS</span></div>
     </div>
     <div class="split right" onclick="goTo('archive.html')">
-        <img src="скуча. чб.png" alt="Archive">
+        <img src="скуча. чб.webp" alt="Archive">
         <div class="overlay"><span>ART</span></div>
     </div>
 </section>
