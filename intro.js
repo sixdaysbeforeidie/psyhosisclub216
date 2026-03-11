@@ -18,18 +18,15 @@ enterScreen.addEventListener("touchend", (e) => {
 }, { passive: false });
 
 function startIntro() {
-    // Разблокируем музыку через shell если доступно
-    if (window.parent && window.parent.shellUnlockMusic) {
-        window.parent.shellUnlockMusic();
-    } else {
-        // Fallback — своя музыка
-        localStorage.setItem("musicUnlocked", "1");
-        if (music) {
-            music.volume = 0;
-            music.play().catch(() => {});
-            gsap.to(music, { volume: 0.5, duration: 3 });
-        }
-    }
+    localStorage.setItem("musicUnlocked", "1");
+
+    music.volume = 0;
+    music.play().catch(() => {});
+    gsap.to(music, { volume: 0.5, duration: 3 });
+
+    setInterval(() => {
+        localStorage.setItem("musicTime", music.currentTime);
+    }, 1000);
 
     gsap.to(enterScreen, {
         opacity: 0, duration: 1, ease: "power2.inOut",
@@ -139,19 +136,13 @@ function showIntro() {
                     transformOrigin: "bottom center"
                 });
 
+                localStorage.setItem("musicTime", music.currentTime);
                 gsap.timeline({ delay: 3 })
                     .to("body", {
                         opacity: 0,
                         duration: 3,
                         ease: "power1.inOut",
-                        onComplete: () => {
-                            // Переходим через shell
-                            if (window.parent && window.parent.shellNavigate) {
-                                window.parent.shellNavigate("main.html");
-                            } else {
-                                window.location.href = "main.html";
-                            }
-                        }
+                        onComplete: () => { window.location.href = "main.html"; }
                     });
 
             } else {

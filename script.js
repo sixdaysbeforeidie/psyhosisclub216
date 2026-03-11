@@ -1,38 +1,45 @@
-/* ── script.js — для страниц внутри iframe ── */
-
+/* ── Переходы ── */
 function goTo(page) {
-    // Если мы внутри shell — используем его навигацию
-    if (window.parent && window.parent.shellNavigate) {
-        window.parent.shellNavigate(page);
-    } else {
-        // Fallback — прямой переход
-        document.body.style.transition = "opacity 0.5s ease";
-        document.body.style.opacity = 0;
-        setTimeout(() => { window.location.href = page; }, 500);
-    }
-}
-
-function toggleMenu() {
-    if (window.parent && window.parent.toggleMenu) {
-        window.parent.toggleMenu();
-    }
+    const music = document.getElementById("bgMusic");
+    if (music) localStorage.setItem("musicTime", music.currentTime);
+    document.body.style.transition = "opacity 0.5s ease";
+    document.body.style.opacity = 0;
+    setTimeout(() => { window.location.href = page; }, 500);
 }
 
 /* ── Появление страницы ── */
 window.addEventListener("load", () => {
     document.body.style.opacity = 0;
-    // Убираем шапку внутри iframe — она в shell
-    const header = document.querySelector("header");
-    const burger = document.querySelector(".burger");
-    const mobileNav = document.querySelector(".mobile-nav");
-    const audio = document.querySelector("audio");
-    if (header) header.style.display = "none";
-    if (burger) burger.style.display = "none";
-    if (mobileNav) mobileNav.style.display = "none";
-    if (audio) audio.style.display = "none"; // музыка в shell
-
     setTimeout(() => {
-        document.body.style.transition = "opacity 0.5s ease";
+        document.body.style.transition = "opacity 0.6s ease";
         document.body.style.opacity = 1;
     }, 50);
+
+    // Музыка
+    const music = document.getElementById("bgMusic");
+    if (!music) return;
+    const savedTime = parseFloat(localStorage.getItem("musicTime") || "0");
+    music.currentTime = savedTime;
+    music.volume = 0.5;
+    if (localStorage.getItem("musicUnlocked") === "1") {
+        music.play().catch(() => {});
+    }
+    setInterval(() => {
+        if (!music.paused) localStorage.setItem("musicTime", music.currentTime);
+    }, 1000);
+
+    // Prefetch всех страниц для быстрой загрузки
+    const pages = ["main.html", "artist.html", "releases.html", "archive.html", "Contact.html", "artist-beluv.html", "artist-soangry.html"];
+    pages.forEach(page => {
+        const link = document.createElement("link");
+        link.rel = "prefetch";
+        link.href = page;
+        document.head.appendChild(link);
+    });
 });
+
+/* ── Мобильное меню ── */
+function toggleMenu() {
+    const nav = document.getElementById("mobileNav");
+    if (nav) nav.classList.toggle("open");
+}

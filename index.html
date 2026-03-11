@@ -4,188 +4,36 @@
     <meta charset="UTF-8">
     <title>PSYHOSISCLUB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html, body {
-            width: 100%; height: 100%;
-            background: #080808;
-            font-family: 'Cormorant Garamond', serif;
-            overflow: hidden;
-        }
-
-        header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 28px 40px;
-            pointer-events: none;
-        }
-        header.hidden { display: none; }
-
-        .logo {
-            font-size: 11px;
-            letter-spacing: 8px;
-            font-weight: 300;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-            cursor: pointer;
-            pointer-events: all;
-            transition: color 0.3s;
-        }
-        .logo:hover { color: rgba(255,255,255,0.9); }
-
-        nav { display: flex; gap: 32px; pointer-events: all; }
-        nav a, .header-right a {
-            font-size: 10px;
-            letter-spacing: 4px;
-            font-weight: 300;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
-            cursor: pointer;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        nav a:hover, .header-right a:hover { color: rgba(255,255,255,0.8); }
-        .header-right { pointer-events: all; }
-
-        .burger {
-            display: none;
-            position: fixed;
-            top: 24px; right: 24px;
-            z-index: 1100;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-        .burger span {
-            display: block;
-            width: 22px; height: 1px;
-            background: rgba(255,255,255,0.5);
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(8,8,8,0.97);
-            z-index: 1050;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-        }
-        .mobile-nav.open { display: flex; }
-        .mobile-nav a {
-            font-size: 13px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        #contentFrame {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            transition: opacity 0.5s ease;
-        }
-        #contentFrame.fading { opacity: 0; }
-
-        @media (max-width: 768px) {
-            header nav, .header-right { display: none; }
-            .burger { display: flex; }
-            header { padding: 20px 24px; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="intro.css">
 </head>
 <body>
 
-<audio id="bgMusic" src="back2.mp3" loop></audio>
+<div id="enterScreen">
+    <p id="enterText">CLICK TO ENTER</p>
+</div>
 
-<header id="mainHeader" class="hidden">
-    <div class="logo" onclick="navigateTo('main.html')">PSYHOSISCLUB</div>
-    <nav>
-        <a onclick="navigateTo('artist.html')">ARTISTS</a>
-        <a onclick="navigateTo('releases.html')">RELEASES</a>
-        <a onclick="navigateTo('archive.html')">ARCHIVE</a>
-    </nav>
-    <div class="header-right">
-        <a onclick="navigateTo('Contact.html')">CONTACT</a>
+<div id="flash"></div>
+
+<div class="scene" id="scene" style="display:none;">
+    <div class="bg" id="bg"></div>
+    <p class="intro-title">PSYHOSISCLUB</p>
+
+    <div id="char">
+        <img src="main char1.webp" alt="character">
     </div>
-</header>
 
-<div class="burger" id="burgerBtn" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-</div>
-<div class="mobile-nav" id="mobileNav">
-    <a onclick="navigateTo('artist.html')">ARTISTS</a>
-    <a onclick="navigateTo('releases.html')">RELEASES</a>
-    <a onclick="navigateTo('archive.html')">ARCHIVE</a>
-    <a onclick="navigateTo('Contact.html')">CONTACT</a>
+    <div class="star" id="s1"><img src="stars.webp" alt="star"></div>
+    <div class="star" id="s2"><img src="stars.webp" alt="star"></div>
+    <div class="star" id="s3"><img src="stars.webp" alt="star"></div>
+
+    <p class="hint" id="hint">find the right star</p>
 </div>
 
-<iframe id="contentFrame" src="intro.html"></iframe>
+<audio id="bgMusic" src="back2.mp3" loop></audio>
+<audio id="laughSound" src="New_Project.mp3"></audio>
 
-<script>
-    const music     = document.getElementById("bgMusic");
-    const frame     = document.getElementById("contentFrame");
-    const header    = document.getElementById("mainHeader");
-    const burgerBtn = document.getElementById("burgerBtn");
-    const mobileNav = document.getElementById("mobileNav");
-
-    music.volume = 0.5;
-
-    // Сохраняем позицию музыки
-    setInterval(() => {
-        if (!music.paused) localStorage.setItem("musicTime", music.currentTime);
-    }, 1000);
-
-    function unlockMusic() {
-        const savedTime = parseFloat(localStorage.getItem("musicTime") || "0");
-        music.currentTime = savedTime;
-        music.play().catch(() => {});
-        localStorage.setItem("musicUnlocked", "1");
-    }
-
-    function navigateTo(page) {
-        mobileNav.classList.remove("open");
-        frame.classList.add("fading");
-        setTimeout(() => { frame.src = page; }, 450);
-    }
-
-    function toggleMenu() {
-        mobileNav.classList.toggle("open");
-    }
-
-    frame.addEventListener("load", () => {
-        const src = frame.src.split("/").pop().split("?")[0];
-        const isIntro = (src === "intro.html" || src === "");
-
-        if (isIntro) {
-            header.classList.add("hidden");
-            burgerBtn.style.display = "none";
-        } else {
-            header.classList.remove("hidden");
-            burgerBtn.style.display = "";
-        }
-
-        frame.classList.remove("fading");
-
-        // Передаём функции в iframe
-        try {
-            frame.contentWindow.shellNavigate    = navigateTo;
-            frame.contentWindow.shellUnlockMusic = unlockMusic;
-            frame.contentWindow.shellToggleMenu  = toggleMenu;
-        } catch(e) {}
-    });
-</script>
+<script src="intro.js"></script>
 </body>
 </html>
