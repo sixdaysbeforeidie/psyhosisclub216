@@ -1,0 +1,237 @@
+/* ── Табы ── */
+.archive-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 120px 0 48px;
+}
+
+.tab-btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 6px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 0 6px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.4);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tab-btn.active {
+    color: rgba(255,255,255,0.7);
+}
+
+.tab-btn.active::after {
+    transform: scaleX(1);
+}
+
+.tab-btn:hover {
+    color: rgba(255,255,255,0.5);
+}
+
+/* ── Контент табов ── */
+.tab-content {
+    display: none;
+    animation: fadeInTab 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Coming Soon ── */
+.coming-soon {
+    text-align: center;
+    padding: 80px 0;
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.1);
+    text-transform: uppercase;
+    grid-column: 1 / -1;
+    column-span: all;
+}
+
+/* ── Галерея артов (masonry) ── */
+.art-grid {
+    columns: 4;
+    column-gap: 12px;
+    padding: 0 40px 80px;
+}
+
+.art-item {
+    break-inside: avoid;
+    margin-bottom: 12px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.art-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: grayscale(20%);
+}
+
+.art-item:hover img {
+    transform: scale(1.03);
+    filter: grayscale(0%);
+}
+
+/* ── Мерч ── */
+.merch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 0 40px 80px;
+}
+
+.merch-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.merch-cover {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: #111;
+}
+
+.merch-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    filter: grayscale(20%);
+}
+
+.merch-card:hover .merch-cover img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.merch-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: rgba(255,255,255,0.05);
+}
+
+.merch-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.merch-hover span {
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+}
+
+.merch-card:hover .merch-hover {
+    opacity: 1;
+}
+
+.merch-title {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+.merch-price {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.25);
+    margin-top: 4px;
+}
+
+/* ── Лайтбокс ── */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 9000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 28px; right: 36px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.3);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    transition: color 0.3s;
+}
+
+.lightbox-close:hover { color: rgba(255,255,255,0.7); }
+
+.lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.2);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    transition: color 0.3s;
+}
+
+.lightbox-prev:hover, .lightbox-next:hover { color: rgba(255,255,255,0.6); }
+.lightbox-prev { left: 32px; }
+.lightbox-next { right: 32px; }
+
+/* ── Мобайл ── */
+@media (max-width: 768px) {
+    .art-grid { columns: 2; padding: 0 16px 60px; }
+    .merch-grid { grid-template-columns: repeat(2, 1fr); padding: 0 16px 60px; }
+    .archive-tabs { padding-top: 80px; gap: 40px; }
+}
