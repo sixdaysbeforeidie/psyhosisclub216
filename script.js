@@ -22,37 +22,24 @@ function toggleMenu() {
     if (nav) nav.classList.toggle("open");
 }
 
-/* ── Музыка на main.html ── */
+/* ── Музыка ── */
 window.addEventListener("load", () => {
     const music = document.getElementById("bgMusic");
     if (!music) return;
 
     const savedTime = parseFloat(localStorage.getItem("musicTime") || "0");
+    const unlocked  = localStorage.getItem("musicUnlocked") === "1";
 
-    function playMusic() {
-        music.currentTime = savedTime;
-        music.volume = 0;
-        music.play().then(() => {
-            let v = 0;
-            const fade = setInterval(() => {
-                v += 0.05;
-                if (v >= 0.5) { music.volume = 0.5; clearInterval(fade); }
-                else music.volume = v;
-            }, 80);
-        }).catch(() => {});
+    music.currentTime = savedTime;
+    music.volume = 0.5;
+
+    if (unlocked) {
+        // пользователь уже кликал на интро — можно играть
+        music.play().catch(() => {});
     }
 
-    playMusic();
-
-    const unlock = () => {
-        playMusic();
-        document.removeEventListener("click",    unlock);
-        document.removeEventListener("touchend", unlock);
-    };
-    document.addEventListener("click",    unlock);
-    document.addEventListener("touchend", unlock);
-
+    // сохраняем позицию каждую секунду
     setInterval(() => {
-        localStorage.setItem("musicTime", music.currentTime);
+        if (!music.paused) localStorage.setItem("musicTime", music.currentTime);
     }, 1000);
 });

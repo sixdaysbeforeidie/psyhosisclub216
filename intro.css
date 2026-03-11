@@ -12,7 +12,6 @@ html, body {
     font-family: 'Cormorant Garamond', serif;
 }
 
-/* ── ЭФФЕКТ СОЛНЦЕЗАЩИТНЫХ ОЧКОВ ── */
 body::after {
     content: '';
     position: fixed;
@@ -22,7 +21,6 @@ body::after {
     z-index: 700;
 }
 
-/* ── ENTER SCREEN ── */
 #enterScreen {
     position: fixed;
     inset: 0;
@@ -48,7 +46,6 @@ body::after {
     50%       { opacity: 0.7; }
 }
 
-/* ── FLASH ── */
 #flash {
     position: fixed;
     inset: 0;
@@ -58,26 +55,23 @@ body::after {
     z-index: 9999;
 }
 
-/* ── SCENE ── */
 .scene {
     position: relative;
     width: 100vw;
     height: 100vh;
 }
 
-/* ── BACKGROUND ── */
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url('introbg.png');
+    background-image: url('try\ maybe.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
-    z-index: 1;
-    
+    z-index: 0;
 }
 
-/* ── TITLE ── */
+
 .intro-title {
     position: absolute;
     top: 28px;

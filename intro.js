@@ -11,7 +11,6 @@ const bg          = document.getElementById("bg");
 
 const isMobile = window.innerWidth <= 768;
 
-/* ── ENTER SCREEN ── */
 enterScreen.addEventListener("click", startIntro);
 enterScreen.addEventListener("touchend", (e) => {
     e.preventDefault();
@@ -19,6 +18,9 @@ enterScreen.addEventListener("touchend", (e) => {
 }, { passive: false });
 
 function startIntro() {
+    // Разблокируем музыку — клик пользователя уже был
+    localStorage.setItem("musicUnlocked", "1");
+
     music.volume = 0;
     music.play().catch(() => {});
     gsap.to(music, { volume: 0.5, duration: 3 });
@@ -124,13 +126,11 @@ function showIntro() {
                 breathe.kill();
                 stars.forEach(s => s.style.pointerEvents = "none");
 
-                // Звук смеха
                 if (laugh) {
                     laugh.volume = 0.85;
                     laugh.play().catch(() => {});
                 }
 
-                // Лёгкое покачивание — только scaleY, никаких прыжков
                 gsap.to(charEl, {
                     scaleY: 1.022, scaleX: 0.982,
                     duration: 0.35, ease: "sine.inOut",
@@ -138,7 +138,6 @@ function showIntro() {
                     transformOrigin: "bottom center"
                 });
 
-                // Экран плавно темнеет и переходит на main
                 localStorage.setItem("musicTime", music.currentTime);
                 gsap.timeline({ delay: 3 })
                     .to("body", {
@@ -149,7 +148,6 @@ function showIntro() {
                     });
 
             } else {
-                // Неправильная — подпрыгивает и падает
                 star.style.pointerEvents = "none";
                 floatAnims[i] && floatAnims[i].kill();
 

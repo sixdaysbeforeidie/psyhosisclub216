@@ -5,7 +5,7 @@
     <title>soangry — PSYHOSISCLUB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="artist.css">
+    <link rel="stylesheet" href="Artist.css">
 </head>
 <body>
 
@@ -14,12 +14,12 @@
 <header>
     <div class="logo" onclick="goTo('main.html')">PSYHOSISCLUB</div>
     <nav>
-        <a href="artist.html">ARTISTS</a>
-        <a href="releases.html">RELEASES</a>
-        <a href="archive.html">ARCHIVE</a>
+        <a onclick="goTo('artist.html')">ARTISTS</a>
+        <a onclick="goTo('releases.html')">RELEASES</a>
+        <a onclick="goTo('archive.html')">ARCHIVE</a>
     </nav>
     <div class="header-right">
-        <a href="Contact.html">CONTACT</a>
+       <a onclick="goTo('Contact.html')">CONTACT</a>
     </div>
 </header>
 
@@ -27,10 +27,10 @@
     <span></span><span></span><span></span>
 </div>
 <div class="mobile-nav" id="mobileNav">
-    <a href="artist.html" onclick="toggleMenu()">ARTISTS</a>
-    <a href="releases.html" onclick="toggleMenu()">RELEASES</a>
-    <a href="archive.html" onclick="toggleMenu()">ARCHIVE</a>
-    <a href="Contact.html" onclick="toggleMenu()">CONTACT</a>
+    <a onclick="goTo('artist.html'); toggleMenu()">ARTISTS</a>
+    <a onclick="goTo('releases.html'); toggleMenu()">RELEASES</a>
+    <a onclick="goTo('archive.html'); toggleMenu()">ARCHIVE</a>
+    <a onclick="goTo('Contact.html'); toggleMenu()">CONTACT</a>
 </div>
 
 <main class="artist-single">
@@ -56,14 +56,14 @@
     <div class="release-section">
         <p class="release-label">Latest Release</p>
         <iframe class="spotify-embed"
-            src="https://open.spotify.com/track/5SedYLqvvKD2PJFT9UsUg9?si=44288e3332c741d5"
-            width="100%" height="352" frameBorder="0"
+            src="https://open.spotify.com/embed/track/5SedYLqvvKD2PJFT9UsUg9?utm_source=generator&theme=0"
+            width="100%" height="152" frameBorder="0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy">
         </iframe>
     </div>
 
-    <a class="back-btn" onclick="goTo('artist.html')">← back to artists</a>
+    <a class="back-btn" onclick="goTo('Artist.html')">← back to artists</a>
 
 </main>
 

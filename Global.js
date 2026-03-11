@@ -7,7 +7,6 @@ function goTo(page) {
     setTimeout(() => { window.location.href = page; }, 600);
 }
 
-/* ── Появление страницы ── */
 window.addEventListener("load", () => {
     document.body.style.opacity = 0;
     setTimeout(() => {
@@ -16,13 +15,11 @@ window.addEventListener("load", () => {
     }, 80);
 });
 
-/* ── Мобильное меню ── */
 function toggleMenu() {
     const nav = document.getElementById("mobileNav");
     if (nav) nav.classList.toggle("open");
 }
 
-/* ── Музыка на main.html ── */
 window.addEventListener("load", () => {
     const music = document.getElementById("bgMusic");
     if (!music) return;
