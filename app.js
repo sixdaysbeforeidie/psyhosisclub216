@@ -17,48 +17,61 @@ window.addEventListener('load', () => {
         if (!music.paused) localStorage.setItem('musicTime', music.currentTime);
     }, 1000);
 
-    // ── Инициализация лайтбокса для архива ──
     initLightbox();
 });
+
+/* ════════════════════════
+   FADE OVERLAY
+════════════════════════ */
+const overlay = document.createElement('div');
+overlay.id = 'pageOverlay';
+overlay.style.cssText = `
+    position: fixed; inset: 0; background: #0a0a0a;
+    z-index: 9999; opacity: 0; pointer-events: none;
+    transition: opacity 0.35s ease;
+`;
+document.body.appendChild(overlay);
+
+function fadeOverlay(toOpacity, cb) {
+    overlay.style.pointerEvents = toOpacity > 0 ? 'all' : 'none';
+    overlay.style.opacity = toOpacity;
+    setTimeout(cb, 360);
+}
 
 /* ════════════════════════
    SPA ROUTER
 ════════════════════════ */
 let currentPage = null;
+let isTransitioning = false;
 
 function goTo(page) {
-    // сохраняем музыку
+    if (isTransitioning) return;
+    if (page === currentPage) return;
+    isTransitioning = true;
+
     const music = document.getElementById('bgMusic');
     if (music) localStorage.setItem('musicTime', music.currentTime);
 
-    // скрываем все страницы
-    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    fadeOverlay(1, () => {
+        document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
 
-    // показываем нужную
-    const target = document.getElementById('page-' + page);
-    if (!target) return;
+        const target = document.getElementById('page-' + page);
+        if (!target) { isTransitioning = false; return; }
 
-    target.style.display = 'block';
-    // перезапускаем анимацию
-    target.style.animation = 'none';
-    target.offsetHeight; // reflow
-    target.style.animation = '';
+        target.style.display = 'block';
+        window.scrollTo(0, 0);
+        currentPage = page;
 
-    // скролл наверх
-    window.scrollTo(0, 0);
+        document.querySelectorAll('nav a, .header-right a').forEach(a => {
+            a.style.opacity = (a.dataset.page === page) ? '1' : '';
+            a.style.borderBottom = (a.dataset.page === page)
+                ? '1px solid rgba(255,255,255,0.3)' : '';
+        });
 
-    currentPage = page;
+        document.querySelector('header').style.display = 'flex';
 
-    // подсвечиваем активный nav-пункт
-    document.querySelectorAll('nav a, .header-right a').forEach(a => {
-        a.style.opacity = (a.dataset.page === page) ? '1' : '';
-        a.style.borderBottom = (a.dataset.page === page)
-            ? '1px solid rgba(255,255,255,0.3)'
-            : '';
+        fadeOverlay(0, () => { isTransitioning = false; });
     });
-
-    // шапка всегда видна
-    document.querySelector('header').style.display = 'flex';
 }
 
 /* ════════════════════════
@@ -119,6 +132,6 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ════════════════════════
-   INIT — показываем main
+   INIT
 ════════════════════════ */
 goTo('main');
