@@ -1,0 +1,124 @@
+/* ════════════════════════
+   MUSIC
+════════════════════════ */
+window.addEventListener('load', () => {
+    const music = document.getElementById('bgMusic');
+    if (!music) return;
+
+    const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
+    music.currentTime = savedTime;
+    music.volume = 0.5;
+
+    if (localStorage.getItem('musicUnlocked') === '1') {
+        music.play().catch(() => {});
+    }
+
+    setInterval(() => {
+        if (!music.paused) localStorage.setItem('musicTime', music.currentTime);
+    }, 1000);
+
+    // ── Инициализация лайтбокса для архива ──
+    initLightbox();
+});
+
+/* ════════════════════════
+   SPA ROUTER
+════════════════════════ */
+let currentPage = null;
+
+function goTo(page) {
+    // сохраняем музыку
+    const music = document.getElementById('bgMusic');
+    if (music) localStorage.setItem('musicTime', music.currentTime);
+
+    // скрываем все страницы
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+
+    // показываем нужную
+    const target = document.getElementById('page-' + page);
+    if (!target) return;
+
+    target.style.display = 'block';
+    // перезапускаем анимацию
+    target.style.animation = 'none';
+    target.offsetHeight; // reflow
+    target.style.animation = '';
+
+    // скролл наверх
+    window.scrollTo(0, 0);
+
+    currentPage = page;
+
+    // подсвечиваем активный nav-пункт
+    document.querySelectorAll('nav a, .header-right a').forEach(a => {
+        a.style.opacity = (a.dataset.page === page) ? '1' : '';
+        a.style.borderBottom = (a.dataset.page === page)
+            ? '1px solid rgba(255,255,255,0.3)'
+            : '';
+    });
+
+    // шапка всегда видна
+    document.querySelector('header').style.display = 'flex';
+}
+
+/* ════════════════════════
+   BURGER
+════════════════════════ */
+function toggleMenu() {
+    const nav = document.getElementById('mobileNav');
+    if (nav) nav.classList.toggle('open');
+}
+
+/* ════════════════════════
+   ARCHIVE TABS
+════════════════════════ */
+function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+        b.classList.toggle('active', (i === 0 && tab === 'art') || (i === 1 && tab === 'merch'));
+    });
+    document.getElementById('tab-art').classList.toggle('active', tab === 'art');
+    document.getElementById('tab-merch').classList.toggle('active', tab === 'merch');
+}
+
+/* ════════════════════════
+   LIGHTBOX
+════════════════════════ */
+let lightboxImages = [];
+let lightboxIndex  = 0;
+
+function initLightbox() {
+    const items = document.querySelectorAll('.art-item img');
+    const srcs  = Array.from(items).map(i => i.src);
+    items.forEach((img, idx) => {
+        img.parentElement.addEventListener('click', () => openLightbox(srcs, idx));
+    });
+}
+
+function openLightbox(imgs, idx) {
+    lightboxImages = imgs;
+    lightboxIndex  = idx;
+    document.getElementById('lightboxImg').src = imgs[idx];
+    document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+}
+
+function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+    document.getElementById('lightboxImg').src = lightboxImages[lightboxIndex];
+}
+
+document.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('lightbox');
+    if (!lb || !lb.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft')  lightboxNav(-1);
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'Escape')     closeLightbox();
+});
+
+/* ════════════════════════
+   INIT — показываем main
+════════════════════════ */
+goTo('main');

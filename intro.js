@@ -142,7 +142,7 @@ function showIntro() {
                         opacity: 0,
                         duration: 3,
                         ease: "power1.inOut",
-                        onComplete: () => { window.location.href = "main.html"; }
+                        onComplete: () => { window.location.href = "app.html"; }
                     });
 
             } else {
