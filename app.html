@@ -11,7 +11,6 @@
 
 <audio id="bgMusic" src="back2.mp3" loop></audio>
 
-<!-- ── HEADER ── -->
 <header>
     <div class="logo" onclick="goTo('main')">PSYHOSISCLUB</div>
     <nav>
@@ -34,6 +33,12 @@
     <a onclick="goTo('contact'); toggleMenu()">CONTACT</a>
 </div>
 
+<!-- ── VOLUME CONTROL ── -->
+<div class="volume-control" id="volumeControl">
+    <span class="volume-icon" id="volumeIcon" onclick="toggleVolume()">♪</span>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+</div>
+
 <!-- ════════════════════════════════
      СТРАНИЦЫ
 ════════════════════════════════ -->
@@ -42,11 +47,11 @@
 <div id="page-main" class="page">
     <section class="hero">
         <div class="split left" onclick="goTo('artists')">
-            <img src="fugu 河豚.webp" alt="Artists">
+            <img src="рисунок мелом мп3.webp" alt="Artists">
             <div class="overlay"><span>ARTISTS</span></div>
         </div>
         <div class="split right" onclick="goTo('archive')">
-            <img src="скуча. чб.webp" alt="Archive">
+            <img src="ахуеть я так скучаю.webp" alt="Archive">
             <div class="overlay"><span>ART</span></div>
         </div>
     </section>
@@ -104,8 +109,7 @@
                 src="https://open.spotify.com/embed/album/3MCZGfmM465WYoNYyD3YXa?utm_source=generator&theme=0"
                 width="100%" height="152" frameBorder="0"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy">
-            </iframe>
+                loading="lazy"></iframe>
         </div>
         <a class="back-btn" onclick="goTo('artists')">← back to artists</a>
     </main>
@@ -134,8 +138,7 @@
                 src="https://open.spotify.com/embed/track/5SedYLqvvKD2PJFT9UsUg9?utm_source=generator&theme=0"
                 width="100%" height="152" frameBorder="0"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy">
-            </iframe>
+                loading="lazy"></iframe>
         </div>
         <a class="back-btn" onclick="goTo('artists')">← back to artists</a>
     </main>
@@ -145,112 +148,38 @@
 <div id="page-releases" class="page" style="display:none">
     <main class="releases-page">
         <p class="page-label">RELEASES</p>
-
         <section class="artist-section">
             <h2 class="artist-heading">soangry</h2>
             <div class="releases-grid">
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/6TbS7xxV9WA32runharKNf','_blank')">
-                    <div class="release-cover"><img src="knees.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">knees</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/4C59owRjYFJcza2Otm7H5X','_blank')">
-                    <div class="release-cover"><img src="216.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">216</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/4Vuiq9eBdxtrFaSLIz1BYW','_blank')">
-                    <div class="release-cover"><img src="firstlove.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">firstlove</p><p class="release-meta">Single · 2025</p>
-                </div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/6TbS7xxV9WA32runharKNf','_blank')"><div class="release-cover"><img src="knees.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">knees</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/4C59owRjYFJcza2Otm7H5X','_blank')"><div class="release-cover"><img src="216.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">216</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/4Vuiq9eBdxtrFaSLIz1BYW','_blank')"><div class="release-cover"><img src="firstlove.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">firstlove</p><p class="release-meta">Single · 2025</p></div>
             </div>
         </section>
-
         <section class="artist-section">
             <h2 class="artist-heading">be.luv</h2>
             <div class="releases-grid">
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3MCZGfmM465WYoNYyD3YXa','_blank')">
-                    <div class="release-cover"><img src="onemoretry.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">onemoretry</p><p class="release-meta">Single · 2026</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/1mEvDobqyJt7uOj4KRIrwk','_blank')">
-                    <div class="release-cover"><img src="record25.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">record25</p><p class="release-meta">Album · 2026</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/1mEvDobqyJt7uOj4KRIrwk','_blank')">
-                    <div class="release-cover"><img src="miumiubag.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">miumiubag</p><p class="release-meta">Single · 2026</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/6AaDHhE9uxuxzf9habnPd2','_blank')">
-                    <div class="release-cover"><img src="full blacklist.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">full blacklist</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3ax50DVcylqCX2oejIMLAf','_blank')">
-                    <div class="release-cover"><img src="アン：リアルパーソン.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">アン：リアルパーソン</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/61zjYpcuaTLCdmKGUyjFmj','_blank')">
-                    <div class="release-cover"><img src="balada vol1.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">balada vol1</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/57BAbXl1NESLBbKBTAJTGK','_blank')">
-                    <div class="release-cover"><img src="unknownnumbers.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">unknownnumbers</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/22CEcUq1iIY2luO9Zw99Ok','_blank')">
-                    <div class="release-cover"><img src="idontgiveafckk.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">idontgiveafckk</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/1CAHb4ejXaRI4Q7lEGDMl8','_blank')">
-                    <div class="release-cover"><img src="хроники2929.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">хроники2929</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/5hYIxvcq7mOoiE1V1veaJu','_blank')">
-                    <div class="release-cover"><img src="fugu 河豚.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">fugu 河豚</p><p class="release-meta">Single · 2025</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3DPjwpsNTDKzBZkL0ftzlA','_blank')">
-                    <div class="release-cover"><img src="problem of fall.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">problem of fall</p><p class="release-meta">Single · 2024</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/1nt08fG3nSMQYYJerwXs74','_blank')">
-                    <div class="release-cover"><img src="VAMPPHunt3R.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">VAMPPHunt3R</p><p class="release-meta">Single · 2024</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3yxsWeJicihwwXO0iVNryv','_blank')">
-                    <div class="release-cover"><img src="30 pts irl.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">30 pts irl</p><p class="release-meta">Single · 2024</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3FEpzS5qTN1rP2ryXdXz8u','_blank')">
-                    <div class="release-cover"><img src="loveisdestructive.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">loveisdestructive</p><p class="release-meta">Single · 2024</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/5fc1ygHTvNwj4VEvAOnfaF','_blank')">
-                    <div class="release-cover"><img src="рисунок мелом.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">рисунок мелом</p><p class="release-meta">Single · 2024</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3IVUd7WNLbiN5aTz5w7FWQ','_blank')">
-                    <div class="release-cover"><img src="three days lil rain.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">three days lil rain</p><p class="release-meta">Single · 2024</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3bPY0E8I4vHC2bnrxUn6mu','_blank')">
-                    <div class="release-cover"><img src="cant help myself.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">cant help myself</p><p class="release-meta">Single · 2023</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/5OyeSzf7fphbHPoLiMZnOn','_blank')">
-                    <div class="release-cover"><img src="твои руки.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">твои руки</p><p class="release-meta">Single · 2022</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3bFYyZlzWjbYMHGhoSgg3a','_blank')">
-                    <div class="release-cover"><img src="215.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">215</p><p class="release-meta">Single · 2022</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/0xTYGlaukX7o8TzaZXNQHA','_blank')">
-                    <div class="release-cover"><img src="escapism.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">escapism</p><p class="release-meta">Single · 2022</p>
-                </div>
-                <div class="release-card" onclick="window.open('https://open.spotify.com/album/5BS0EcuNWoXn1nXvPodrVD','_blank')">
-                    <div class="release-cover"><img src="sweety candy girl.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div>
-                    <p class="release-title">sweety candy girl</p><p class="release-meta">Single · 2022</p>
-                </div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3MCZGfmM465WYoNYyD3YXa','_blank')"><div class="release-cover"><img src="onemoretry.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">onemoretry</p><p class="release-meta">Single · 2026</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/1mEvDobqyJt7uOj4KRIrwk','_blank')"><div class="release-cover"><img src="record25.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">record25</p><p class="release-meta">Album · 2026</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/1mEvDobqyJt7uOj4KRIrwk','_blank')"><div class="release-cover"><img src="miumiubag.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">miumiubag</p><p class="release-meta">Single · 2026</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/6AaDHhE9uxuxzf9habnPd2','_blank')"><div class="release-cover"><img src="full blacklist.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">full blacklist</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3ax50DVcylqCX2oejIMLAf','_blank')"><div class="release-cover"><img src="アン：リアルパーソン.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">アン：リアルパーソン</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/61zjYpcuaTLCdmKGUyjFmj','_blank')"><div class="release-cover"><img src="balada vol1.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">balada vol1</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/57BAbXl1NESLBbKBTAJTGK','_blank')"><div class="release-cover"><img src="unknownnumbers.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">unknownnumbers</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/22CEcUq1iIY2luO9Zw99Ok','_blank')"><div class="release-cover"><img src="idontgiveafckk.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">idontgiveafckk</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/1CAHb4ejXaRI4Q7lEGDMl8','_blank')"><div class="release-cover"><img src="хроники2929.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">хроники2929</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/5hYIxvcq7mOoiE1V1veaJu','_blank')"><div class="release-cover"><img src="fugu 河豚.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">fugu 河豚</p><p class="release-meta">Single · 2025</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3DPjwpsNTDKzBZkL0ftzlA','_blank')"><div class="release-cover"><img src="problem of fall.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">problem of fall</p><p class="release-meta">Single · 2024</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/1nt08fG3nSMQYYJerwXs74','_blank')"><div class="release-cover"><img src="VAMPPHunt3R.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">VAMPPHunt3R</p><p class="release-meta">Single · 2024</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3yxsWeJicihwwXO0iVNryv','_blank')"><div class="release-cover"><img src="30 pts irl.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">30 pts irl</p><p class="release-meta">Single · 2024</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3FEpzS5qTN1rP2ryXdXz8u','_blank')"><div class="release-cover"><img src="loveisdestructive.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">loveisdestructive</p><p class="release-meta">Single · 2024</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/5fc1ygHTvNwj4VEvAOnfaF','_blank')"><div class="release-cover"><img src="рисунок мелом.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">рисунок мелом</p><p class="release-meta">Single · 2024</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3IVUd7WNLbiN5aTz5w7FWQ','_blank')"><div class="release-cover"><img src="three days lil rain.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">three days lil rain</p><p class="release-meta">Single · 2024</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3bPY0E8I4vHC2bnrxUn6mu','_blank')"><div class="release-cover"><img src="cant help myself.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">cant help myself</p><p class="release-meta">Single · 2023</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/5OyeSzf7fphbHPoLiMZnOn','_blank')"><div class="release-cover"><img src="твои руки.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">твои руки</p><p class="release-meta">Single · 2022</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/3bFYyZlzWjbYMHGhoSgg3a','_blank')"><div class="release-cover"><img src="215.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">215</p><p class="release-meta">Single · 2022</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/0xTYGlaukX7o8TzaZXNQHA','_blank')"><div class="release-cover"><img src="escapism.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">escapism</p><p class="release-meta">Single · 2022</p></div>
+                <div class="release-card" onclick="window.open('https://open.spotify.com/album/5BS0EcuNWoXn1nXvPodrVD','_blank')"><div class="release-cover"><img src="sweety candy girl.webp" onerror="this.parentElement.classList.add('no-cover')"><div class="cover-placeholder">♦</div><div class="release-hover"><span>LISTEN</span></div></div><p class="release-title">sweety candy girl</p><p class="release-meta">Single · 2022</p></div>
             </div>
         </section>
     </main>
@@ -264,13 +193,91 @@
     </div>
     <div class="tab-content active" id="tab-art">
         <div class="art-grid" id="artGrid">
-            <!-- <div class="art-item"><img src="art1.webp" loading="lazy"></div> -->
-            <div class="coming-soon">coming soon</div>
+            <div class="art-item"><img src="1 aura.webp" draggable="false"></div>
+            <div class="art-item"><img src="1.webp" draggable="false"></div>
+            <div class="art-item"><img src="123 pad 123.webp" draggable="false"></div>
+            <div class="art-item"><img src="456743534534.webp" draggable="false"></div>
+            <div class="art-item"><img src="balada 3 final.webp" draggable="false"></div>
+            <div class="art-item"><img src="bb.webp" draggable="false"></div>
+            <div class="art-item"><img src="BROKEN MAIN.webp" draggable="false"></div>
+            <div class="art-item"><img src="colaA222222 234.webp" draggable="false"></div>
+            <div class="art-item"><img src="colab.webp" draggable="false"></div>
+            <div class="art-item"><img src="colaba 1MAIN.webp" draggable="false"></div>
+            <div class="art-item"><img src="colaba nn.webp" draggable="false"></div>
+            <div class="art-item"><img src="collabIk123.webp" draggable="false"></div>
+            <div class="art-item"><img src="cool WOW WOW.webp" draggable="false"></div>
+            <div class="art-item"><img src="CYRCKLE.webp" draggable="false"></div>
+            <div class="art-item"><img src="dark dark darkkk.webp" draggable="false"></div>
+            <div class="art-item"><img src="devo4ka me4ta.webp" draggable="false"></div>
+            <div class="art-item"><img src="dran 1.webp" draggable="false"></div>
+            <div class="art-item"><img src="efr.webp" draggable="false"></div>
+            <div class="art-item"><img src="EPISOD121.webp" draggable="false"></div>
+            <div class="art-item"><img src="finaal colab s HITBOX.webp" draggable="false"></div>
+            <div class="art-item"><img src="GUL.webp" draggable="false"></div>
+            <div class="art-item"><img src="holi grail.webp" draggable="false"></div>
+            <div class="art-item"><img src="hunya.webp" draggable="false"></div>
+            <div class="art-item"><img src="hz hz hz hz nu POH.webp" draggable="false"></div>
+            <div class="art-item"><img src="i trash.webp" draggable="false"></div>
+            <div class="art-item"><img src="idk322.webp" draggable="false"></div>
+            <div class="art-item"><img src="main23456.webp" draggable="false"></div>
+            <div class="art-item"><img src="make emo pls!.webp" draggable="false"></div>
+            <div class="art-item"><img src="MENTYALP.webp" draggable="false"></div>
+            <div class="art-item"><img src="moi moi.webp" draggable="false"></div>
+            <div class="art-item"><img src="my bloody valentine VOL 2 main.webp" draggable="false"></div>
+            <div class="art-item"><img src="new way.webp" draggable="false"></div>
+            <div class="art-item"><img src="opa popa.webp" draggable="false"></div>
+            <div class="art-item"><img src="opiUM!.webp" draggable="false"></div>
+            <div class="art-item"><img src="pala4i 222.webp" draggable="false"></div>
+            <div class="art-item"><img src="pohui uge.webp" draggable="false"></div>
+            <div class="art-item"><img src="poto,.webp" draggable="false"></div>
+            <div class="art-item"><img src="ppsychosisi tyme 1 pic.webp" draggable="false"></div>
+            <div class="art-item"><img src="prosti.webp" draggable="false"></div>
+            <div class="art-item"><img src="qwdqwdqd.webp" draggable="false"></div>
+            <div class="art-item"><img src="qwerffffffffffffff.webp" draggable="false"></div>
+            <div class="art-item"><img src="R U DRAMING.webp" draggable="false"></div>
+            <div class="art-item"><img src="rafik.webp" draggable="false"></div>
+            <div class="art-item"><img src="red2222.webp" draggable="false"></div>
+            <div class="art-item"><img src="rw.webp" draggable="false"></div>
+            <div class="art-item"><img src="sad angels234.webp" draggable="false"></div>
+            <div class="art-item"><img src="scary spookii.webp" draggable="false"></div>
+            <div class="art-item"><img src="sh wow.webp" draggable="false"></div>
+            <div class="art-item"><img src="shiza2.webp" draggable="false"></div>
+            <div class="art-item"><img src="somuchmomey.webp" draggable="false"></div>
+            <div class="art-item"><img src="sorry1.webp" draggable="false"></div>
+            <div class="art-item"><img src="sry im late agaimn.webp" draggable="false"></div>
+            <div class="art-item"><img src="the doorss.webp" draggable="false"></div>
+            <div class="art-item"><img src="the taro23.webp" draggable="false"></div>
+            <div class="art-item"><img src="tilt game.webp" draggable="false"></div>
+            <div class="art-item"><img src="tilt png.webp" draggable="false"></div>
+            <div class="art-item"><img src="TO4KA STANOVITSA PYATNOM.webp" draggable="false"></div>
+            <div class="art-item"><img src="trash1.webp" draggable="false"></div>
+            <div class="art-item"><img src="unreal 2 wtf.webp" draggable="false"></div>
+            <div class="art-item"><img src="unreal again final.webp" draggable="false"></div>
+            <div class="art-item"><img src="unreal crosss1.webp" draggable="false"></div>
+            <div class="art-item"><img src="unrealperson.webp" draggable="false"></div>
+            <div class="art-item"><img src="Untitled-1-Recovered.webp" draggable="false"></div>
+            <div class="art-item"><img src="us or no.webp" draggable="false"></div>
+            <div class="art-item"><img src="violet 12341231231244214124.webp" draggable="false"></div>
+            <div class="art-item"><img src="wasted b.webp" draggable="false"></div>
+            <div class="art-item"><img src="watch demon.webp" draggable="false"></div>
+            <div class="art-item"><img src="wated main.webp" draggable="false"></div>
+            <div class="art-item"><img src="wb sad storiesdqwd.webp" draggable="false"></div>
+            <div class="art-item"><img src="wb.webp" draggable="false"></div>
+            <div class="art-item"><img src="we r in nightmare. but its okey. we together.webp" draggable="false"></div>
+            <div class="art-item"><img src="we.webp" draggable="false"></div>
+            <div class="art-item"><img src="wtf idk lol.webp" draggable="false"></div>
+            <div class="art-item"><img src="yamaa.webp" draggable="false"></div>
+            <div class="art-item"><img src="yooo yooooo.webp" draggable="false"></div>
+            <div class="art-item"><img src="ахуеть я так скучаю.webp" draggable="false"></div>
+            <div class="art-item"><img src="ЕЙФООРТЯЯ.webp" draggable="false"></div>
+            <div class="art-item"><img src="зшявщы.webp" draggable="false"></div>
+            <div class="art-item"><img src="рфдшдгоф.webp" draggable="false"></div>
+            <div class="art-item"><img src="хуета полная вроде).webp" draggable="false"></div>
+            <div class="art-item"><img src="多幸感.webp" draggable="false"></div>
         </div>
     </div>
     <div class="tab-content" id="tab-merch">
         <div class="merch-grid">
-            <!-- <div class="merch-card" onclick="window.open('url','_blank')">...</div> -->
             <div class="coming-soon">coming soon</div>
         </div>
     </div>
@@ -279,6 +286,7 @@
         <span class="lightbox-prev" onclick="lightboxNav(-1)">←</span>
         <img id="lightboxImg" src="" alt="">
         <span class="lightbox-next" onclick="lightboxNav(1)">→</span>
+        <a class="lightbox-buy" href="https://t.me/beluuv" target="_blank">BUY / ORDER →</a>
     </div>
 </div>
 
@@ -290,31 +298,19 @@
         <div class="divider"></div>
         <div class="contact-list">
             <div class="contact-row">
-                <div class="contact-left">
-                    <p class="contact-name">be.luv</p>
-                    <p class="contact-role">Artist</p>
-                </div>
+                <div class="contact-left"><p class="contact-name">be.luv</p><p class="contact-role">Artist</p></div>
                 <a href="mailto:beluv@psyhosisclub.com" class="contact-email">почта этого</a>
             </div>
             <div class="contact-row">
-                <div class="contact-left">
-                    <p class="contact-name">soangry</p>
-                    <p class="contact-role">Artist</p>
-                </div>
+                <div class="contact-left"><p class="contact-name">soangry</p><p class="contact-role">Artist</p></div>
                 <a href="mailto:soangry@psyhosisclub.com" class="contact-email">почта этой</a>
             </div>
             <div class="contact-row">
-                <div class="contact-left">
-                    <p class="contact-name">taiski.des</p>
-                    <p class="contact-role">Art & Design</p>
-                </div>
+                <div class="contact-left"><p class="contact-name">taiski.des</p><p class="contact-role">Art & Design</p></div>
                 <a href="mailto:taiski@psyhosisclub.com" class="contact-email">почта вот того</a>
             </div>
             <div class="contact-row">
-                <div class="contact-left">
-                    <p class="contact-name">six days before i die</p>
-                    <p class="contact-role">Web & Founder</p>
-                </div>
+                <div class="contact-left"><p class="contact-name">six days before i die</p><p class="contact-role">Web & Founder</p></div>
                 <a href="mailto:sixdaysbeforeidie@gmail.com" class="contact-email">sixdaysbeforeidie@gmail.com</a>
             </div>
         </div>

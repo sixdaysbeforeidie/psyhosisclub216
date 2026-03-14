@@ -17,8 +17,23 @@ window.addEventListener('load', () => {
         if (!music.paused) localStorage.setItem('musicTime', music.currentTime);
     }, 1000);
 
+    const slider = document.getElementById('volumeSlider');
+    if (slider) {
+        slider.value = 0.5;
+        slider.addEventListener('input', () => {
+            music.volume = parseFloat(slider.value);
+            const icon = document.getElementById('volumeIcon');
+            if (icon) icon.textContent = parseFloat(slider.value) === 0 ? '×' : '♪';
+        });
+    }
+
     initLightbox();
 });
+
+function toggleVolume() {
+    const vc = document.getElementById('volumeControl');
+    if (vc) vc.classList.toggle('open');
+}
 
 /* ════════════════════════
    FADE OVERLAY
@@ -129,6 +144,16 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft')  lightboxNav(-1);
     if (e.key === 'ArrowRight') lightboxNav(1);
     if (e.key === 'Escape')     closeLightbox();
+});
+
+/* ════════════════════════
+   ЗАЩИТА КАРТИНОК
+════════════════════════ */
+document.addEventListener('contextmenu', (e) => {
+    if (e.target.closest('.art-item')) e.preventDefault();
+});
+document.addEventListener('dragstart', (e) => {
+    if (e.target.closest('.art-item')) e.preventDefault();
 });
 
 /* ════════════════════════
