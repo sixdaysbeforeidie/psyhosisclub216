@@ -9,9 +9,14 @@ window.addEventListener('load', () => {
     music.currentTime = savedTime;
     music.volume = 0.5;
 
-    if (localStorage.getItem('musicUnlocked') === '1') {
-        music.play().catch(() => {});
-    }
+    // Всегда пробуем запустить — браузер разрешит если пользователь
+    // уже взаимодействовал со страницей на интро
+    music.play().catch(() => {
+        // если не получилось — ждём любого клика и запускаем
+        document.addEventListener('click', () => {
+            music.play().catch(() => {});
+        }, { once: true });
+    });
 
     setInterval(() => {
         if (!music.paused) localStorage.setItem('musicTime', music.currentTime);
