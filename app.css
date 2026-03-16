@@ -335,6 +335,7 @@ nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex;
     .site-footer { padding: 24px 20px; }
 }
 
+/* ── Footer ── */
 .site-footer {
     width: 100%;
     padding: 40px 40px 32px;
@@ -352,4 +353,230 @@ nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex;
     text-transform: uppercase;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
+}
+
+/* ── Hero overlay text ── */
+.hero-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+}
+
+.hero-title h1 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 10px;
+}
+
+.hero-title p {
+    font-size: 10px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+}
+
+@media (max-width: 768px) {
+    .hero-title h1 { font-size: 18px; letter-spacing: 6px; }
+    .hero-title p { font-size: 9px; letter-spacing: 5px; }
+}
+
+/* ════════════════════════
+   MAIN PAGE — REDESIGN
+════════════════════════ */
+
+/* Скрываем шапку на главной */
+body.on-main header,
+body.on-main .burger {
+    display: none !important;
+}
+
+/* Герой на весь экран без отступа сверху */
+body.on-main #page-main .hero {
+    padding-top: 0;
+    height: 100vh;
+}
+
+/* Оверлей надписи ARTISTS / ART — крупнее */
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.overlay span {
+    font-size: 10px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    transition: color 0.4s, letter-spacing 0.4s;
+    font-weight: 300;
+}
+
+.split:hover .overlay span {
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 14px;
+}
+
+/* Тонкая вертикальная линия между сплитами */
+.hero {
+    position: relative;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 50%;
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* 216 SOCIETY внизу по центру */
+.hero-title {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+}
+
+.hero-title h1 {
+    display: none;
+}
+
+.hero-title p {
+    font-size: 9px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+/* Логотип поверх — большой, вверху по центру */
+.hero-logo {
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    pointer-events: none;
+    text-align: center;
+}
+
+.hero-logo span {
+    font-size: 13px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .hero-title p { font-size: 8px; letter-spacing: 5px; }
+    .hero-logo span { font-size: 11px; letter-spacing: 5px; }
+    .hero::after { display: none; }
+}
+
+/* ════════════════════════
+   MAIN — ERD STYLE
+════════════════════════ */
+
+/* Прозрачная шапка на главной */
+body.on-main header {
+    display: flex !important;
+    background: transparent !important;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%) !important;
+}
+
+body.on-main #page-main .hero {
+    padding-top: 0;
+    height: 100vh;
+}
+
+/* Убираем границу между секциями */
+body.on-main .split {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+body.on-main .split img {
+    filter: grayscale(15%) brightness(0.75);
+    transition: filter 0.6s ease;
+}
+
+body.on-main .split:hover img {
+    filter: grayscale(0%) brightness(0.9);
+    transform: none;
+}
+
+/* Убираем вертикальную линию */
+body.on-main .hero::after {
+    display: none;
+}
+
+/* Оверлей — подписи внизу */
+body.on-main .overlay {
+    position: absolute;
+    inset: auto 0 32px 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.on-main .overlay span {
+    font-size: 9px;
+    letter-spacing: 8px;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.4s, letter-spacing 0.4s;
+}
+
+body.on-main .split:hover .overlay span {
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 12px;
+}
+
+/* Убираем hero-logo и hero-title */
+body.on-main .hero-logo,
+body.on-main .hero-title {
+    display: none;
+}
+
+/* 216 SOCIETY по центру внизу */
+body.on-main .hero::before {
+    content: '216 SOCIETY';
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    font-size: 9px;
+    letter-spacing: 7px;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    pointer-events: none;
+    white-space: nowrap;
 }

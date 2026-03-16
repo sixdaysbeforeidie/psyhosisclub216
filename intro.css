@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 html, body {
     width: 100%;
     height: 100%;
@@ -22,7 +21,6 @@ html, body {
     justify-content: center;
     cursor: pointer;
 }
-
 #enterText {
     font-size: 13px;
     letter-spacing: 12px;
@@ -31,12 +29,10 @@ html, body {
     color: rgba(255,255,255,0.25);
     animation: pulse 2.5s ease-in-out infinite;
 }
-
 @keyframes pulse {
     0%, 100% { opacity: 0.25; }
     50%       { opacity: 0.7; }
 }
-
 #flash {
     position: fixed;
     inset: 0;
@@ -45,13 +41,13 @@ html, body {
     pointer-events: none;
     z-index: 9999;
 }
-
 .scene {
     position: relative;
     width: 100vw;
     height: 100vh;
 }
 
+/* ── Фон — затемнён и размыт ── */
 .bg {
     position: absolute;
     inset: 0;
@@ -60,8 +56,9 @@ html, body {
     background-position: center;
     opacity: 0;
     z-index: 0;
+    filter: blur(3px) brightness(0.55) saturate(0.8);
+    transform: scale(1.05);
 }
-
 
 .intro-title {
     position: absolute;
@@ -88,7 +85,6 @@ html, body {
     opacity: 0;
     z-index: 5;
 }
-
 #char img {
     height: 100vh;
     width: auto;
@@ -104,14 +100,12 @@ html, body {
     opacity: 0;
     z-index: 800;
 }
-
 .star img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     transition: filter 0.25s, transform 0.25s;
 }
-
 .star:hover img {
     filter: brightness(1.4);
     transform: scale(1.06);
@@ -144,7 +138,6 @@ html, body {
     #enterText { font-size: 11px; letter-spacing: 8px; }
     .hint { font-size: 9px; letter-spacing: 3px; }
 }
-
 @media (max-width: 400px) {
     .star { width: 85px; height: 85px; }
     #char { height: 82vh; }

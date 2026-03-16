@@ -96,6 +96,7 @@ function goTo(page) {
         });
 
         document.querySelector('header').style.display = 'flex';
+        document.body.classList.toggle('on-main', page === 'main');
 
         fadeOverlay(0, () => { isTransitioning = false; });
     });
