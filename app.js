@@ -1,7 +1,7 @@
 /* ════════════════════════
-   MUSIC
+   MUSIC — запуск сразу
 ════════════════════════ */
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const music = document.getElementById('bgMusic');
     if (!music) return;
 
@@ -9,14 +9,21 @@ window.addEventListener('load', () => {
     music.currentTime = savedTime;
     music.volume = 0.5;
 
-    // Всегда пробуем запустить — браузер разрешит если пользователь
-    // уже взаимодействовал со страницей на интро
-    music.play().catch(() => {
-        // если не получилось — ждём любого клика и запускаем
-        document.addEventListener('click', () => {
-            music.play().catch(() => {});
-        }, { once: true });
-    });
+    // Пробуем запустить сразу
+    const playPromise = music.play();
+
+    if (playPromise !== undefined) {
+        playPromise.catch(() => {
+            // Браузер заблокировал — ждём первого касания/клика
+            const resume = () => {
+                music.play().catch(() => {});
+                document.removeEventListener('click', resume);
+                document.removeEventListener('touchend', resume);
+            };
+            document.addEventListener('click', resume);
+            document.addEventListener('touchend', resume);
+        });
+    }
 
     setInterval(() => {
         if (!music.paused) localStorage.setItem('musicTime', music.currentTime);
