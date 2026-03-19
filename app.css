@@ -580,3 +580,44 @@ body.on-main .hero::before {
     pointer-events: none;
     white-space: nowrap;
 }
+
+/* ── Счётчик артов ── */
+.archive-count {
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.12);
+    text-transform: uppercase;
+    margin-top: -32px;
+    margin-bottom: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+}
+
+/* ════════════════════════
+   ARTIST SINGLE — SPOTIFY BG
+════════════════════════ */
+#page-artist-beluv,
+#page-artist-soangry {
+    position: relative;
+}
+
+#page-artist-beluv::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('beluv.jpg') center/cover no-repeat;
+    filter: blur(60px) brightness(0.18) saturate(0.6);
+    z-index: -1;
+    transform: scale(1.1);
+}
+
+#page-artist-soangry::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('soangry.jpg') center/cover no-repeat;
+    filter: blur(60px) brightness(0.18) saturate(0.6);
+    z-index: -1;
+    transform: scale(1.1);
+}

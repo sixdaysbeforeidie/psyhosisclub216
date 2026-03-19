@@ -1,6 +1,3 @@
-/* ════════════════════════
-   MUSIC — запуск сразу
-════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
     const music = document.getElementById('bgMusic');
     if (!music) return;
@@ -9,12 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     music.currentTime = savedTime;
     music.volume = 0.5;
 
-    // Пробуем запустить сразу
     const playPromise = music.play();
 
     if (playPromise !== undefined) {
         playPromise.catch(() => {
-            // Браузер заблокировал — ждём первого касания/клика
+        
             const resume = () => {
                 music.play().catch(() => {});
                 document.removeEventListener('click', resume);
@@ -47,9 +43,6 @@ function toggleVolume() {
     if (vc) vc.classList.toggle('open');
 }
 
-/* ════════════════════════
-   FADE OVERLAY
-════════════════════════ */
 const overlay = document.createElement('div');
 overlay.id = 'pageOverlay';
 overlay.style.cssText = `
@@ -65,9 +58,6 @@ function fadeOverlay(toOpacity, cb) {
     setTimeout(cb, 360);
 }
 
-/* ════════════════════════
-   SPA ROUTER
-════════════════════════ */
 let currentPage = null;
 let isTransitioning = false;
 
@@ -102,17 +92,11 @@ function goTo(page) {
     });
 }
 
-/* ════════════════════════
-   BURGER
-════════════════════════ */
 function toggleMenu() {
     const nav = document.getElementById('mobileNav');
     if (nav) nav.classList.toggle('open');
 }
 
-/* ════════════════════════
-   ARCHIVE TABS
-════════════════════════ */
 function switchTab(tab) {
     document.querySelectorAll('.tab-btn').forEach((b, i) => {
         b.classList.toggle('active', (i === 0 && tab === 'art') || (i === 1 && tab === 'merch'));
@@ -121,9 +105,6 @@ function switchTab(tab) {
     document.getElementById('tab-merch').classList.toggle('active', tab === 'merch');
 }
 
-/* ════════════════════════
-   LIGHTBOX
-════════════════════════ */
 let lightboxImages = [];
 let lightboxIndex  = 0;
 
@@ -159,9 +140,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape')     closeLightbox();
 });
 
-/* ════════════════════════
-   ЗАЩИТА КАРТИНОК
-════════════════════════ */
 document.addEventListener('contextmenu', (e) => {
     if (e.target.closest('.art-item')) e.preventDefault();
 });
@@ -169,7 +147,4 @@ document.addEventListener('dragstart', (e) => {
     if (e.target.closest('.art-item')) e.preventDefault();
 });
 
-/* ════════════════════════
-   INIT
-════════════════════════ */
 goTo('main');
