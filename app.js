@@ -1,47 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const music = document.getElementById('bgMusic');
-    if (!music) return;
-
-    const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
-    music.currentTime = savedTime;
-    music.volume = 0.5;
-
-    const playPromise = music.play();
-
-    if (playPromise !== undefined) {
-        playPromise.catch(() => {
-        
-            const resume = () => {
-                music.play().catch(() => {});
-                document.removeEventListener('click', resume);
-                document.removeEventListener('touchend', resume);
-            };
-            document.addEventListener('click', resume);
-            document.addEventListener('touchend', resume);
-        });
-    }
-
-    setInterval(() => {
-        if (!music.paused) localStorage.setItem('musicTime', music.currentTime);
-    }, 1000);
-
-    const slider = document.getElementById('volumeSlider');
-    if (slider) {
-        slider.value = 0.5;
-        slider.addEventListener('input', () => {
-            music.volume = parseFloat(slider.value);
-            const icon = document.getElementById('volumeIcon');
-            if (icon) icon.textContent = parseFloat(slider.value) === 0 ? '×' : '♪';
-        });
-    }
-
     initLightbox();
-});
 
-function toggleVolume() {
-    const vc = document.getElementById('volumeControl');
-    if (vc) vc.classList.toggle('open');
-}
+    const enterScreen = document.getElementById('enterScreen');
+    if (enterScreen) {
+        const enter = () => {
+            enterScreen.style.opacity = '0';
+            enterScreen.style.pointerEvents = 'none';
+            setTimeout(() => {
+                document.body.classList.add('entered');
+            }, 800);
+            enterScreen.removeEventListener('click', enter);
+            enterScreen.removeEventListener('touchend', enter);
+        };
+        enterScreen.addEventListener('click', enter);
+        enterScreen.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            enter();
+        }, { passive: false });
+    }
+});
 
 const overlay = document.createElement('div');
 overlay.id = 'pageOverlay';
@@ -65,9 +42,6 @@ function goTo(page) {
     if (isTransitioning) return;
     if (page === currentPage) return;
     isTransitioning = true;
-
-    const music = document.getElementById('bgMusic');
-    if (music) localStorage.setItem('musicTime', music.currentTime);
 
     fadeOverlay(1, () => {
         document.querySelectorAll('.page').forEach(p => p.style.display = 'none');

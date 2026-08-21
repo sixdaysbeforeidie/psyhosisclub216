@@ -1,5 +1,35 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ════════════════════════
+   ENTER GATE
+════════════════════════ */
+#enterScreen {
+    position: fixed;
+    inset: 0;
+    background: #060606;
+    z-index: 8000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.8s ease;
+}
+#enterText {
+    font-size: 13px;
+    letter-spacing: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    font-family: 'Cormorant Garamond', serif;
+    animation: enterPulse 2.5s ease-in-out infinite;
+}
+@keyframes enterPulse {
+    0%, 100% { opacity: 0.25; }
+    50%       { opacity: 0.7; }
+}
+body.entered #enterScreen { display: none; }
+
+
 html, body {
     width: 100%; min-height: 100%;
     background: #0a0a0a; color: white;
@@ -188,16 +218,6 @@ nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex;
 .contact-email:hover { color: rgba(255,255,255,0.8); opacity: 1; }
 
 /* ════════════════════════
-   VOLUME
-════════════════════════ */
-.volume-control { position: fixed; bottom: 28px; right: 32px; z-index: 500; display: flex; align-items: center; gap: 10px; background: rgba(10,10,10,0.85); border: 1px solid rgba(255,255,255,0.08); padding: 8px 14px; backdrop-filter: blur(8px); }
-#volumeIcon { font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.3); user-select: none; min-width: 12px; text-align: center; }
-#volumeSlider { -webkit-appearance: none; appearance: none; width: 80px; height: 1px; background: rgba(255,255,255,0.15); outline: none; border: none; cursor: pointer; }
-#volumeSlider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 8px; height: 8px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: background 0.2s; }
-#volumeSlider::-webkit-slider-thumb:hover { background: white; }
-#volumeSlider::-moz-range-thumb { width: 8px; height: 8px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; border: none; }
-
-/* ════════════════════════
    MOBILE
 ════════════════════════ */
 @media (max-width: 900px) { .artist-photo { width: 240px; height: 240px; } .artists-grid { gap: 50px; } }
@@ -224,91 +244,6 @@ nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex;
     .contact-name { font-size: 17px; }
     .contact-email { font-size: 12px; }
     .hero { flex-direction: column; }
-    .volume-control { bottom: 16px; right: 16px; padding: 6px 10px; }
-    #volumeSlider { width: 60px; }
-}
-
-/* ════════════════════════
-   VOLUME CONTROL
-════════════════════════ */
-.volume-control {
-    position: fixed;
-    bottom: 28px;
-    right: 32px;
-    z-index: 500;
-    display: flex;
-    align-items: center;
-    gap: 0px;
-    background: rgba(10,10,10,0.85);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(8px);
-    overflow: hidden;
-    padding: 8px 12px;
-    transition: width 0.3s ease;
-}
-
-.volume-icon {
-    font-size: 13px;
-    color: rgba(255,255,255,0.3);
-    cursor: pointer;
-    user-select: none;
-    min-width: 16px;
-    text-align: center;
-    transition: color 0.3s;
-    flex-shrink: 0;
-}
-.volume-icon:hover { color: rgba(255,255,255,0.7); }
-
-#volumeSlider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 0;
-    max-width: 0;
-    height: 1px;
-    background: rgba(255,255,255,0.15);
-    outline: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 0;
-    opacity: 0;
-    transition: width 0.3s ease, max-width 0.3s ease, opacity 0.3s ease, margin-left 0.3s ease;
-}
-
-.volume-control:hover #volumeSlider,
-.volume-control.open #volumeSlider {
-    width: 80px;
-    max-width: 80px;
-    opacity: 1;
-    margin-left: 10px;
-}
-
-#volumeSlider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 8px; height: 8px;
-    background: rgba(255,255,255,0.5);
-    border-radius: 50%; cursor: pointer;
-    transition: background 0.2s;
-}
-#volumeSlider::-webkit-slider-thumb:hover { background: white; }
-#volumeSlider::-moz-range-thumb {
-    width: 8px; height: 8px;
-    background: rgba(255,255,255,0.5);
-    border-radius: 50%; cursor: pointer; border: none;
-}
-
-/* ── Мобилка — всегда виден ── */
-@media (max-width: 768px) {
-    .volume-control {
-        bottom: 16px;
-        right: 16px;
-        padding: 6px 10px;
-    }
-    #volumeSlider {
-        width: 60px !important;
-        max-width: 60px !important;
-        opacity: 1 !important;
-        margin-left: 8px !important;
-    }
 }
 
 /* ════════════════════════
@@ -598,7 +533,8 @@ body.on-main .hero::before {
    ARTIST SINGLE — SPOTIFY BG
 ════════════════════════ */
 #page-artist-beluv,
-#page-artist-soangry {
+#page-artist-soangry,
+#page-artist-taiski {
     position: relative;
 }
 
@@ -617,6 +553,16 @@ body.on-main .hero::before {
     position: fixed;
     inset: 0;
     background: url('soangry.jpg') center/cover no-repeat;
+    filter: blur(60px) brightness(0.18) saturate(0.6);
+    z-index: -1;
+    transform: scale(1.1);
+}
+
+#page-artist-taiski::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('taiski.jpg') center/cover no-repeat;
     filter: blur(60px) brightness(0.18) saturate(0.6);
     z-index: -1;
     transform: scale(1.1);
