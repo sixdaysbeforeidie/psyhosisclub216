@@ -35,6 +35,7 @@ html, body {
     background: #0a0a0a; color: white;
     font-family: 'Cormorant Garamond', serif;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -89,8 +90,8 @@ nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex;
 /* ════════════════════════
    MAIN HERO
 ════════════════════════ */
-#page-main { height: 100vh; overflow: hidden; }
-.hero { display: flex; height: 100vh; padding-top: 64px; }
+#page-main { height: 100vh; height: 100dvh; overflow: hidden; }
+.hero { display: flex; height: 100vh; height: 100dvh; padding-top: 64px; }
 .split { flex: 1; position: relative; overflow: hidden; cursor: pointer; }
 .split img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease, filter 0.6s ease; filter: grayscale(30%) brightness(0.6); }
 .split:hover img { transform: scale(1.04); filter: grayscale(0%) brightness(0.8); }
@@ -246,6 +247,26 @@ nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex;
     .hero { flex-direction: column; }
 }
 
+/* На тач-устройствах :hover не срабатывает — даём отклик через :active */
+@media (hover: none) {
+    .split .overlay span { color: rgba(255,255,255,0.5); }
+    .split:active .overlay span { color: rgba(255,255,255,0.95); }
+    .split:active img { filter: grayscale(0%) brightness(0.85); }
+    .artist-card:active { opacity: 0.7; }
+    .release-card:active .release-hover,
+    .merch-card:active .merch-hover { opacity: 1; }
+    .art-item:active img { filter: grayscale(0%); }
+    .social-btn:active { border-color: rgba(255,255,255,0.4); color: white; }
+}
+
+/* Совсем узкие экраны (iPhone SE и похожие) */
+@media (max-width: 380px) {
+    .art-grid { columns: 2; gap: 8px; padding: 0 12px 60px; }
+    .merch-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 12px 60px; }
+    .contact-title { font-size: 20px; letter-spacing: 4px; }
+    .artist-single h1 { font-size: 19px; letter-spacing: 4px; }
+}
+
 /* ════════════════════════
    FOOTER
 ════════════════════════ */
@@ -337,6 +358,7 @@ body.on-main .burger {
 body.on-main #page-main .hero {
     padding-top: 0;
     height: 100vh;
+    height: 100dvh;
 }
 
 /* Оверлей надписи ARTISTS / ART — крупнее */
@@ -445,6 +467,7 @@ body.on-main header {
 body.on-main #page-main .hero {
     padding-top: 0;
     height: 100vh;
+    height: 100dvh;
 }
 
 /* Убираем границу между секциями */
